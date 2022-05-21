@@ -1,0 +1,28 @@
+{
+  "name": "test_task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "firstTask.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Relativelie/test_task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Relativelie/test_task/issues"
+  },
+  "homepage": "https://github.com/Relativelie/test_task#readme",
+  "dependencies": {
+    "concat": "^1.0.3",
+    "fs-readdir-recursive": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
