@@ -1,10 +1,11 @@
 const express = require('express');
+const userRouter = require('./routes/student.routes');
 
 const PORT = process.env.PORT || 8080;
 
 const app = express();
-app.get('/', (req, res) => {
-    res.send('HELLO POSTGRESS + 88cc');
-});
+
+app.use(express.json());
+app.use('/api', userRouter);
 
 app.listen(PORT, () => console.log(`server started ${PORT}`));
