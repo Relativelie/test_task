@@ -18,7 +18,7 @@ class StudentController {
         res.json(student.rows[0]);
     }
 
-    async getStudents(res) {
+    async getStudents(req, res) {
         const students = await db.query('SELECT * FROM students');
         res.json(students.rows);
     }
