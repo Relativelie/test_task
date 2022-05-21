@@ -12,6 +12,7 @@
     },
     "rules": {
         "indent": "off",
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "class-methods-use-this": "off"
     }
 }
