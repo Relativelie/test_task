@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student list</title>
+    <link rel="stylesheet" href="./styles/loadingSpinner.css" />
+    <link rel="stylesheet" href="./styles/creatingBlock.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="options">
+            <button class="options__btn" data-option="adding">Add student</button>
+            <button class="options__btn" data-option="deleting">Delete student</button>
+            <button class="options__btn" data-option="showing">Show all students</button>
+        </div>
+        <form class="creatingForm">
+            <input type="text" placeholder="name">
+            <input type="text" placeholder="surname">
+            <input type="text" placeholder="middle name">
+            <input type="date" placeholder="birthday">
+            <input type="number" placeholder="group">
+            <div class="creatingForm__sendBlock">
+                <button class="creatingForm__createBtn">Create</button>
+                <div class="creatingForm__spinnerBlock">
+                    <div class="loading loadingSpinner"></div>
+                </div>
+            </div>
+
+            <p class="creatingForm__errorTxt">Something went wrong. Please try later or consult your system
+                administrator.
+                <span class="creatingForm__errorCode"></span></p>
+            <p class="creatingForm__successTxt">The student was created</p>
+        </form>
+        <form class="deletingForm">
+            <input type="number" placeholder="name">
+            <button>Delete</button>
+        </form>
+        <div class="studentList">
+
+        </div>
+    </div>
+
+    <script type="module" src="./scripts/script.js"></script>
+</body>
+
+</html>
