@@ -4,13 +4,14 @@
     }
 }
 
-.creatingForm__spinnerBlock {
+.spinnerBlock {
+    display: none;
     width: 20px;
     height: 20px;
 }
 
 .loadingSpinner {
-    display: none;
+    display: flex;
     justify-self: flex-end;
     width: 20px;
     height: 20px;

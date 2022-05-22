@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student list</title>
     <link rel="stylesheet" href="./styles/loadingSpinner.css" />
-    <link rel="stylesheet" href="./styles/creatingBlock.css" />
-    <link rel="stylesheet" href="./styles/deletingBlock.css" />
-    <link rel="stylesheet" href="./styles/requestResult.css" />
     <link rel="stylesheet" href="./styles/index.css" />
 </head>
 
@@ -22,33 +19,24 @@
         </div>
 
         <form class="creatingForm">
-            <input type="text" placeholder="name">
-            <input type="text" placeholder="surname">
-            <input type="text" placeholder="middle name">
-            <input type="date" placeholder="birthday">
-            <input type="number" placeholder="group">
+            <input class="creatingForm__inputElem" type="text" placeholder="name">
+            <input class="creatingForm__inputElem" type="text" placeholder="surname">
+            <input class="creatingForm__inputElem" type="text" placeholder="middle name">
+            <input class="creatingForm__inputElem" type="date" placeholder="birthday">
+            <input class="creatingForm__inputElem" type="number" placeholder="group">
             <div class="creatingForm__sendBlock">
-                <button class="creatingForm__createBtn">Create</button>
-                <div class="creatingForm__spinnerBlock">
-                    <div class="loading loadingSpinner"></div>
-                </div>
+                <button class="creatingForm__createBtn creatingForm__createBtn_btn">Create</button>
             </div>
         </form>
 
         <form class="deletingForm">
-            <input type="number" placeholder="name">
-            <button class="deletingForm__deleteBtn">Delete</button>
-            <div class="deletingForm__spinnerBlock">
-                <div class="loading loadingSpinner"></div>
-            </div>
+            <input class="deletingForm__inputElem" type="number" placeholder="Personal id">
+            <button class="deletingForm__deleteBtn deletingForm__deleteBtn_btn">Delete</button>
         </form>
 
         <div class="studentList">
-            <div class="studentList__spinnerBlock">
-                <div class="loading loadingSpinner"></div>
-            </div>
-            <table>
-                <thead>
+            <table class="studentsTable">
+                <thead class="studentsTable__head">
                     <th>Personal id</th>
                     <th>Name</th>
                     <th>Surname</th>
@@ -56,11 +44,14 @@
                     <th>Birthday</th>
                     <th>Group</th>
                 </thead>
-                <tbody class="studentList__tbody"></tbody>
+                <tbody class="studentsTable__tbody"></tbody>
             </table>
         </div>
+        <div class="spinnerBlock">
+            <div class="loading loadingSpinner"></div>
+        </div>
         <div class="requestResults">
-            <p class="requestResults__errorTxt"></p>
+            <p class="requestResults__errorTxt">Something went wrong. Please try later or consult your system administrator.</p>
             <p class="requestResults__errorCode"></p>
             <p class="requestResults__successTxt"></p>
         </div>

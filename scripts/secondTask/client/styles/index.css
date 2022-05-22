@@ -6,10 +6,119 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
     height: 100vh;
     overflow: auto;
 }
 
-.selectedBlock {
+/* OPTIONS */
+.options {
     display: flex
+}
+
+.options__btn {
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    text-shadow: 0 1px 5px rgb(0, 0, 0);
+    transition: all .4s ease;
+    background-color: rgb(94, 241, 234);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.options__btn:hover {
+    background-color: rgb(35, 251, 179);
+}
+
+/* CREATED BLOCK */
+.creatingForm {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.creatingForm__sendBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+/* DELETED BLOCK */
+.deletingForm {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* INPUTS */
+.creatingForm__inputElem, 
+.deletingForm__inputElem {
+    width: 200px;
+    padding: 18px 36px 15px 26px;
+    box-sizing: border-box;
+    background-color: #81828831;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} 
+
+.creatingForm__inputElem:focus,
+.deletingForm__inputElem:focus {
+    outline: 2px solid rgb(0, 250, 167)
+}
+
+/* TABLE */
+.studentsTable {
+    border-collapse: collapse;
+}
+
+.studentsTable__head {
+    background-color: #868686;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.studentsTable__head th {
+    padding: 10px;
+}
+
+.studentsTable__tbody tr, .studentsTable__tbody td {
+    text-align: center;
+    border: 1px solid #888a8d;
+}
+
+/* COMMON */
+.requestResults__errorTxt,
+.requestResults__successTxt,
+.requestResults__errorCode,
+.studentList,
+.creatingForm,
+.deletingForm {
+    display: none;
+}
+
+.selectedBlock {
+    display: flex;
+}
+
+.creatingForm__createBtn_btn, .deletingForm__deleteBtn_btn {
+    width: 200px;
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    border: 2px solid rgb(94, 241, 234);
+    background-color: rgb(255, 255, 255);
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.creatingForm__createBtn_btn:hover,
+.deletingForm__deleteBtn_btn:hover {
+    background-color: rgb(94, 241, 234);
+    text-shadow: 0 1px 5px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }

@@ -15,6 +15,7 @@
         "no-plusplus": "off",
         "class-methods-use-this": "off",
         "import/extensions": "off",
-        "array-callback-return": "off"
+        "array-callback-return": "off",
+        "import/prefer-default-export": "off"
     }
 }
