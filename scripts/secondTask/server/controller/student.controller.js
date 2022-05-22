@@ -15,12 +15,12 @@ class StudentController {
     async deleteStudent(req, res) {
         const { id } = req.params;
         const student = await db.query('DELETE FROM students where id = $1', [id]);
-        res.json(student.rows[0]);
+        res.json({ result: '200 OK', students: student.rows[0] });
     }
 
     async getStudents(req, res) {
         const students = await db.query('SELECT * FROM students');
-        res.json(students.rows);
+        res.json({ result: '200 OK', students: students.rows });
     }
 }
 

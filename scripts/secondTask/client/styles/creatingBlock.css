@@ -1,16 +1,11 @@
 .creatingForm {
     display: flex;
+    display: none;
     flex-direction: column;
-    /* align-items: center; */
 }
 
 .creatingForm__sendBlock {
     display: flex;
     justify-content: center;
     gap: 5%;
-}
-
-.creatingForm__errorTxt,
-.creatingForm__successTxt {
-    display: none;
 }

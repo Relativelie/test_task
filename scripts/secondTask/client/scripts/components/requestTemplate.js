@@ -5,19 +5,17 @@ export default class RequestTemplate {
         isRequestError,
         errorCode,
         result,
-        errorClassName,
-        successClassName,
-        errorCodeClassName,
+        successTxt,
     ) {
         this.isRequestLoading = isRequestLoading;
         this.isRequestSuccess = isRequestSuccess;
         this.isRequestError = isRequestError;
         this.errorCode = errorCode;
         this.result = result;
-        this.errorClassName = errorClassName;
-        this.successClassName = successClassName;
-        this.errorCodeClassName = errorCodeClassName;
+        this.successTxt = successTxt;
     }
+
+    errorText = 'Something went wrong. Please try later or consult your system administrator.';
 
     requestSuccess = () => {
         this.isRequestSuccess = true;
@@ -39,7 +37,7 @@ export default class RequestTemplate {
     };
 
     saveRequestData = (data) => {
-        this.result = [...data];
+        this.result = [data];
     };
 
     resetAllValues = () => {
@@ -47,5 +45,6 @@ export default class RequestTemplate {
         this.isRequestSuccess = false;
         this.isRequestError = false;
         this.errorCode = '';
+        this.result = [];
     };
 }

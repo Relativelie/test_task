@@ -8,6 +8,8 @@
     <title>Student list</title>
     <link rel="stylesheet" href="./styles/loadingSpinner.css" />
     <link rel="stylesheet" href="./styles/creatingBlock.css" />
+    <link rel="stylesheet" href="./styles/deletingBlock.css" />
+    <link rel="stylesheet" href="./styles/requestResult.css" />
     <link rel="stylesheet" href="./styles/index.css" />
 </head>
 
@@ -18,6 +20,7 @@
             <button class="options__btn" data-option="deleting">Delete student</button>
             <button class="options__btn" data-option="showing">Show all students</button>
         </div>
+
         <form class="creatingForm">
             <input type="text" placeholder="name">
             <input type="text" placeholder="surname">
@@ -30,18 +33,36 @@
                     <div class="loading loadingSpinner"></div>
                 </div>
             </div>
-
-            <p class="creatingForm__errorTxt">Something went wrong. Please try later or consult your system
-                administrator.
-                <span class="creatingForm__errorCode"></span></p>
-            <p class="creatingForm__successTxt">The student was created</p>
         </form>
+
         <form class="deletingForm">
             <input type="number" placeholder="name">
-            <button>Delete</button>
+            <button class="deletingForm__deleteBtn">Delete</button>
+            <div class="deletingForm__spinnerBlock">
+                <div class="loading loadingSpinner"></div>
+            </div>
         </form>
-        <div class="studentList">
 
+        <div class="studentList">
+            <div class="studentList__spinnerBlock">
+                <div class="loading loadingSpinner"></div>
+            </div>
+            <table>
+                <thead>
+                    <th>Personal id</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Middle Name</th>
+                    <th>Birthday</th>
+                    <th>Group</th>
+                </thead>
+                <tbody class="studentList__tbody"></tbody>
+            </table>
+        </div>
+        <div class="requestResults">
+            <p class="requestResults__errorTxt"></p>
+            <p class="requestResults__errorCode"></p>
+            <p class="requestResults__successTxt"></p>
         </div>
     </div>
 

@@ -1,0 +1,5 @@
+.requestResults__errorTxt,
+.requestResults__successTxt,
+.requestResults__errorCode {
+    display: none;
+}
