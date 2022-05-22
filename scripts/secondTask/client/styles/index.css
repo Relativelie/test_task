@@ -70,6 +70,10 @@ body {
     outline: 2px solid rgb(0, 250, 167)
 }
 
+._emptyInput {
+    border: 1px solid red;
+}
+
 /* TABLE */
 .studentsTable {
     border-collapse: collapse;

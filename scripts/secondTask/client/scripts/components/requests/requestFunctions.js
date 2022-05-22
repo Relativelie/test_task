@@ -74,7 +74,6 @@ export const hideRequestResTexts = () => {
 };
 
 export const createStudent = async (e, postReqObj, url, headers) => {
-    e.preventDefault();
     postReqObj.resetAllValues();
     hideRequestResTexts();
     const body = {
@@ -92,7 +91,6 @@ export const getStudents = async (getReqObj, url, headers) => {
 };
 
 export const deleteStudent = async (e, delReqObj, url, headers) => {
-    e.preventDefault();
     delReqObj.resetAllValues();
     hideRequestResTexts();
     const urlWithId = `${url}/${e.target.form[0].value}`;

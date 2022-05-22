@@ -2,10 +2,20 @@ export const showSelectedBlock = (className) => {
     document.querySelector(`.${className}`).classList.add('selectedBlock');
 };
 
+export const removeEmptyInputBorder = () => {
+    const allEmptyInputs = document.querySelectorAll('._emptyInput');
+    if (allEmptyInputs !== null) {
+        for (let i = 0; i < allEmptyInputs.length; i++) {
+            allEmptyInputs[i].classList.remove('_emptyInput');
+        }
+    }
+};
+
 export const hideBlock = () => {
     if (document.querySelector('.selectedBlock') !== null) {
         document.querySelector('.selectedBlock').classList.remove('selectedBlock');
     }
+    removeEmptyInputBorder();
 };
 
 export const allOptions = {

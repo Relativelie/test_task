@@ -10,6 +10,7 @@ import {
     hideBlock,
     allOptions,
     showStudentsTable,
+    removeEmptyInputBorder,
 } from './components/showSelectedOption.js';
 
 const selectOption = async (event, getReqObj, url, headers) => {
@@ -21,6 +22,27 @@ const selectOption = async (event, getReqObj, url, headers) => {
     } else {
         await getStudents(getReqObj, url, headers);
         showStudentsTable(getReqObj);
+    }
+};
+
+const checkValues = (value) => {
+    if (value.trim().length === 0) return true;
+    return false;
+};
+
+const prepareValues = (event, getReqObj, url, headers, type) => {
+    event.preventDefault();
+    removeEmptyInputBorder();
+    const formValues = event.target.form;
+    for (let i = 0; i < formValues.length - 1; i++) {
+        if (checkValues(formValues[i].value)) {
+            formValues[i].classList.add('_emptyInput');
+        }
+    }
+    if (document.querySelector('._emptyInput') === null && type === 'delete') {
+        deleteStudent(event, getReqObj, url, headers);
+    } else if (document.querySelector('._emptyInput') === null && type === 'create') {
+        createStudent(event, getReqObj, url, headers);
     }
 };
 
@@ -77,27 +99,28 @@ const allOptionsOnPage = document.querySelectorAll('.options__btn');
 allOptionsOnPage[0].addEventListener('click', (e) => selectOption(e));
 allOptionsOnPage[1].addEventListener('click', (e) => selectOption(e));
 allOptionsOnPage[2].addEventListener('click', (e) => selectOption(
-        e,
-        getRequest,
-        requestValues.getStudents.url,
-        requestValues.getStudents.headers,
-    ));
-
-// const postUrl = 'https://usersediting.free.beeceptor.com/id';
+    e,
+    getRequest,
+    requestValues.getStudents.url,
+    requestValues.getStudents.headers,
+));
 
 document
     .querySelector('.creatingForm__createBtn')
-    .addEventListener('click', (e) => createStudent(
-            e,
-            postRequest,
-            requestValues.createStudent.url,
-            requestValues.createStudent.headers,
-        ));
+    .addEventListener('click', (e) => prepareValues(
+        e,
+        postRequest,
+        requestValues.createStudent.url,
+        requestValues.createStudent.headers,
+        'create',
+    ));
+
 document
     .querySelector('.deletingForm__deleteBtn')
-    .addEventListener('click', (e) => deleteStudent(
-            e,
-            deleteRequest,
-            requestValues.delStudent.url,
-            requestValues.delStudent.headers,
-        ));
+    .addEventListener('click', (e) => prepareValues(
+        e,
+        deleteRequest,
+        requestValues.delStudent.url,
+        requestValues.delStudent.headers,
+        'delete',
+    ));
