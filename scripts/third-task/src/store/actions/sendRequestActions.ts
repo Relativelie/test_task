@@ -1,3 +1,4 @@
+import { DataType } from '../../types/dataType';
 import { SendRequestAction, SendRequestActionTypes } from '../../types/sendRequestTypes';
 
 export const sendRequestBegin = (): SendRequestAction => ({
@@ -17,7 +18,7 @@ export const sendRequestFatal = (): SendRequestAction => ({
     type: SendRequestActionTypes.SEND_REQUEST_FATAL,
 });
 
-export const saveGetResult = (value: any[]): SendRequestAction => ({
+export const saveGetResult = (value: DataType[]): SendRequestAction => ({
     type: SendRequestActionTypes.SAVE_GET_REQUEST,
     value,
 });
@@ -35,16 +36,12 @@ export const sendGet = (url:string, headers:HeadersInit) => async (dispatch: any
             const result = await request.json();
             if (result.status === 'error') {
                 dispatch(sendRequestError(result.code));
-                console.log(1)
             } else {
 
                 dispatch(sendRequestSuccess());
                 dispatch(saveGetResult(result));
-                console.log(2)
-                console.log(result)
             }
         } catch (err) {
-            console.log(3)
             dispatch(sendRequestFatal());
         }
     };

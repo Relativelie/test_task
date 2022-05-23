@@ -1,3 +1,6 @@
+import { DataType } from "./dataType";
+
+
 export interface SendRequestState {
     isRequestLoading: boolean,
     isRequestSuccess: boolean,
@@ -5,7 +8,7 @@ export interface SendRequestState {
     isRequestError: boolean,
     requestErrorText: string,
     errorCode: null | number,
-    getResult: any,
+    getResult: DataType[],
 }
 
 export enum SendRequestActionTypes {
@@ -35,7 +38,7 @@ interface SendRequestFatal {
 
 interface SaveGetRequest {
     type: SendRequestActionTypes.SAVE_GET_REQUEST,
-    value: any
+    value: DataType[]
 }
 
 export type SendRequestAction =

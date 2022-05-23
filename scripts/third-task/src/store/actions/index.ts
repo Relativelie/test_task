@@ -1,11 +1,11 @@
 import * as sendRequestCreators from './sendRequestActions';
-import * as filterCreators from './filterByDateActions';
 import * as searchCreators from './searchActions';
 import * as contentCreators from './contentActions';
+import * as filterByStatusCreators from './filterByStatusActions';
 
 export default {
     ...sendRequestCreators,
-    ...filterCreators,
     ...searchCreators,
     ...contentCreators,
+    ...filterByStatusCreators,
 };

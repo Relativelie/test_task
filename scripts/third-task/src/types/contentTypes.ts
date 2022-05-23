@@ -1,5 +1,7 @@
+import { DataType } from "./dataType"
+
 export interface ContentState {
-    content: any
+    content: DataType[]
 }
 
 export enum ContentTypes {
@@ -8,7 +10,7 @@ export enum ContentTypes {
 
 interface SaveContent {
     type: ContentTypes.SAVE_CONTENT,
-    data: any
+    data: DataType[]
 }
 
 export type ContentAction =

@@ -32,8 +32,6 @@ export const Menu = () => {
                 ref={inputValue}
                 placeholder="Поиск"
                 onChange={() => searchValue()} />
-            <button></button>
-            <button></button>
         </div>
     );
 };

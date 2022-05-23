@@ -1,6 +1,8 @@
+import { DataType } from "./dataType";
+
 export interface SearchState {
     isSearched: boolean,
-    searchedList: any
+    searchedList: DataType[]
 }
 
 export enum SearchActionTypes {
@@ -10,7 +12,7 @@ export enum SearchActionTypes {
 
 interface TurnOnSearch {
     type: SearchActionTypes.TURN_ON_SEARCH,
-    data: any
+    data: DataType[]
 }
 
 interface TurnOffSearch {

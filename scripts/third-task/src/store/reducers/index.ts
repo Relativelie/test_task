@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import { sendRequestReducer } from './sendRequestReducer';
-import { filterReducer } from './filterReducer';
 import { searchReducer } from './searchReducer';
 import { contentReducer } from './contentReducer';
+import { FilterByStatusReducer } from './filterByStatusReducer';
 
 export const reducers = {
     sendRequestReducer,
-    filterReducer,
     searchReducer,
     contentReducer,
+    FilterByStatusReducer,
 };
 
 export const rootReducer = combineReducers(

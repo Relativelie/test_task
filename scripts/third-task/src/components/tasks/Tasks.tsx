@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import { DataType } from '../../types/dataType';
 
 interface Props {
-    data: any
+    data: DataType[]
 }
 
 export const Tasks:FC<Props> = ({ data }) => {
