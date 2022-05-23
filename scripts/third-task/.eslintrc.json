@@ -15,7 +15,10 @@
             "jsx": true
         },
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": [
+            "./scripts/third-task/tsconfig.json"
+        ]
     },
     "plugins": [
         "react",
