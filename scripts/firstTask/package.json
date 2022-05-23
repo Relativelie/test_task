@@ -4,8 +4,6 @@
   "description": "",
   "main": "firstTask.js",
   "scripts": {
-    "start": "node ./scripts/secondTask/server/index.js",
-    "dev": "nodemon ./scripts/secondTask/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
