@@ -1,11 +1,17 @@
 import { DataType } from '../../types/dataType';
 import { FilterByDateFlagAction, FilterByDateFlagTypes } from '../../types/filterByDateFlagTypes';
 
-export const filterDateByFlagOn = (data: DataType[]):FilterByDateFlagAction => ({
-    type: FilterByDateFlagTypes.FILTER_DATE_BY_FLAG_ON,
+export const filterByDateFlagOn = (data: DataType[]):FilterByDateFlagAction => ({
+    type: FilterByDateFlagTypes.FILTER_BY_DATE_FLAG_ON,
     data,
 });
 
-export const filterDateByFlagOff = ():FilterByDateFlagAction => ({
-    type: FilterByDateFlagTypes.FILTER_DATE_BY_FLAG_OFF,
+export const filterByDateFlagOff = ():FilterByDateFlagAction => ({
+    type: FilterByDateFlagTypes.FILTER_BY_DATE_FLAG_OFF,
+});
+
+export const writeDownFromTo = (from: number, to: number):FilterByDateFlagAction => ({
+    type: FilterByDateFlagTypes.WRITE_DOWN_FROM_TO,
+    from,
+    to,
 });

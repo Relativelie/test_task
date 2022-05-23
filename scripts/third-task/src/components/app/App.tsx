@@ -19,14 +19,19 @@ function App() {
         (requestState) => requestState.sendRequestReducer,
     );
 
+    const { filteredList } = useTypedSelector(
+        (filterState) => filterState.filterByDateFlagReducer,
+    );
+
     const { sendGet, saveContent } = useActions();
 
     useEffect(() => {
-        if (searchedList.length !== 0) {
-            setTasks(searchedList);
-        } else setTasks(content);
-    }, [searchedList, content]);
-
+        if (searchedList.length !== 0) setTasks(searchedList);
+        else if (filteredList.length !== 0) setTasks(filteredList);
+        else setTasks(content);
+        console.log(filteredList)
+    }, [searchedList, content, filteredList]);
+    console.log(filteredList)
     useEffect(() => {
         const getRequest = async () => {
             const url = 'https://cors-anywhere.herokuapp.com/https://todo.doczilla.pro/api/todos?limit=100&offset=3';

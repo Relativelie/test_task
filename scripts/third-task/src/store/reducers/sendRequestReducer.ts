@@ -1,4 +1,8 @@
-import { SendRequestAction, SendRequestActionTypes, SendRequestState } from '../../types/sendRequestTypes';
+import {
+    SendRequestAction,
+    SendRequestActionTypes,
+    SendRequestState,
+} from '../../types/sendRequestTypes';
 
 const initialState: SendRequestState = {
     isRequestLoading: false,
@@ -10,7 +14,10 @@ const initialState: SendRequestState = {
     getResult: [],
 };
 
-export const sendRequestReducer = (state = initialState, action: SendRequestAction): SendRequestState => {
+export const sendRequestReducer = (
+    state = initialState,
+    action: SendRequestAction,
+): SendRequestState => {
     switch (action.type) {
         case SendRequestActionTypes.SEND_REQUEST_BEGIN: {
             return {
