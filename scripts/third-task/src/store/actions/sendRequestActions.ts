@@ -24,24 +24,23 @@ export const saveGetResult = (value: DataType[]): SendRequestAction => ({
 });
 
 export const sendGet = (url:string, headers:HeadersInit) => async (dispatch: any) => {
-        try {
-            dispatch(sendRequestBegin());
-            const request = await fetch(
-                url,
-                {
-                    method: 'GET',
-                    headers,
-                },
-            );
-            const result = await request.json();
-            if (result.status === 'error') {
-                dispatch(sendRequestError(result.code));
-            } else {
-
-                dispatch(sendRequestSuccess());
-                dispatch(saveGetResult(result));
-            }
-        } catch (err) {
-            dispatch(sendRequestFatal());
+    try {
+        dispatch(sendRequestBegin());
+        const request = await fetch(
+            url,
+            {
+                method: 'GET',
+                headers,
+            },
+        );
+        const result = await request.json();
+        if (result.status === 'error') {
+            dispatch(sendRequestError(result.code));
+        } else {
+            dispatch(sendRequestSuccess());
+            dispatch(saveGetResult(result));
         }
-    };
+    } catch (err) {
+        dispatch(sendRequestFatal());
+    }
+};

@@ -1,11 +1,11 @@
-import { DataType } from "./dataType"
+import { DataType } from './dataType';
 
 export interface ContentState {
     content: DataType[]
 }
 
 export enum ContentTypes {
-    SAVE_CONTENT = 'SAVE_CONTENT'
+    SAVE_CONTENT = 'SAVE_CONTENT',
 }
 
 interface SaveContent {
@@ -14,4 +14,4 @@ interface SaveContent {
 }
 
 export type ContentAction =
-    SaveContent
+    SaveContent;
