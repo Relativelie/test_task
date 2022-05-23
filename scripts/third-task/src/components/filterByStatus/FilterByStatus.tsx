@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const FilterByStatus: FC<Props> = ({ data }) => {
-    const { isFiltered, filteredContent } = useTypedSelector(
+    const { isFiltered } = useTypedSelector(
         (filterState) => filterState.FilterByStatusReducer,
     );
     const { turnOffFilter, turnOnFilter } = useActions();

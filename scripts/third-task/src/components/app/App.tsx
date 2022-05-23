@@ -17,14 +17,19 @@ function App() {
   const { getResult } = useTypedSelector(
     (requestState) => requestState.sendRequestReducer,
   );
+  const { filteredContent } = useTypedSelector(
+    (filterState) => filterState.FilterByStatusReducer,
+);
 
   const { sendGet, saveContent } = useActions();
 
   useEffect(() => {
-    if (searchedList.length !== 0) {
+    if (filteredContent.length !== 0) {
+      setTasks(filteredContent);
+    } else if (searchedList.length !== 0) {
       setTasks(searchedList);
     } else setTasks(content);
-  }, [searchedList]);
+  }, [searchedList, filteredContent]);
 
   useEffect(() => {
     const getRequest = async () => {
@@ -42,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <Menu />
-      {/* <FilterByStatus data={isSearched ? searchedList : content}/> */}
+      <FilterByStatus data={isSearched ? searchedList : content}/>
       <Tasks data={tasks} />
     </div>
   );

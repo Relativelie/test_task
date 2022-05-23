@@ -20,12 +20,12 @@ export const FilterByStatusReducer = (
         }
 
         case FilterByStatusTypes.TURN_ON_FILTER: {
-            const allItems = action.data;
-            
+            let allItems = action.data;
+            allItems = allItems.filter((item) => item.status !== true)
             return {
                 ...state,
                 isFiltered: true,
-                filteredContent: action.data
+                filteredContent: allItems
             };
         }
 
