@@ -2,7 +2,7 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
-export const Menu = () => {
+export function Menu() {
     const inputValue = useRef() as MutableRefObject<HTMLInputElement>;
     const { getResult } = useTypedSelector(
         (requestState) => requestState.sendRequestReducer,
@@ -26,12 +26,13 @@ export const Menu = () => {
         }
     };
     return (
-        <div className='menu'>
+        <div className="menu">
             <input
                 type="text"
                 ref={inputValue}
                 placeholder="Поиск"
-                onChange={() => searchValue()} />
+                onChange={() => searchValue()}
+            />
         </div>
     );
-};
+}

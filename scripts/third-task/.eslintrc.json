@@ -4,10 +4,8 @@
         "es2021": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended",
-        "plugin:react-hooks/recommended"
+        "airbnb"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -15,20 +13,20 @@
             "jsx": true
         },
         "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": [
-            "./scripts/third-task/tsconfig.json"
-        ]
+        "sourceType": "module"
     },
     "plugins": [
         "react",
         "@typescript-eslint"
     ],
     "rules": {
+        "import/prefer-default-export": "off",
         "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off",
         "import/no-unresolved": "off",
-        "no-shadow": "off",
-        "default-param-last": "off",
-        "react-hooks/exhaustive-deps": "off"
+        "import/extensions": "off"
     }
 }
