@@ -1,8 +1,0 @@
-@import "../../../variables";
-
-.sidebar__statusCheckbox {
-    display: flex;
-    align-items: center;
-
-    @include smallText;
-}
