@@ -41,6 +41,7 @@ export const Sidebar = () => {
         if (from !== undefined && to !== undefined) {
             getTasksByDate();
         } else {
+            // Filter the entire list without selected days.
             writeDownFromTo(1502384101000, convertToTimestamp(new Date()));
             if (from !== undefined && to !== undefined) getTasksByDate();
         }
@@ -59,6 +60,7 @@ export const Sidebar = () => {
         return [firstDay, lastDay];
     };
 
+    // Get date values from today and calendar btn.
     const getDateValue = (dateValue: Date) => {
         const fromDate = convertToTimestamp(dateValue);
         const toValue = `${dateValue.getFullYear()}.${dateValue.getMonth() + 1}.${dateValue.getDate() + 1}`;
