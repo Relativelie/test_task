@@ -80,8 +80,8 @@ export const ViewerUnit: FC<Props> = ({ data }) => {
             fullDate.getDate(),
         )}${fullDate.getDate()}`;
         const month = `${prepareDateValue(
-            fullDate.getMonth(),
-        )}${fullDate.getMonth()}`;
+            fullDate.getMonth() + 1,
+        )}${fullDate.getMonth() + 1}`;
         return `${dateNum}.${month}.${fullDate.getFullYear()} ${hours}:${minutes}`;
     };
 

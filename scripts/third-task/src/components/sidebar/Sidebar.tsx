@@ -2,6 +2,7 @@ import { MouseEvent, useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { FilterByStatus } from './filterByStatus/FilterByStatus';
+import { FilterCalendarBtn } from './filterCalendarBtn/FilterCalendarBtn';
 import { FilterDateBtn } from './filterDateBtn/FilterDateBtn';
 
 import './Sidebar.scss';
@@ -23,7 +24,7 @@ export const Sidebar = () => {
     );
 
     const convertToTimestamp = (date: Date) => {
-        const midnight = `${date.getFullYear()}.${date.getMonth()}.${date.getDate()}`;
+        const midnight = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
         return Date.parse(midnight);
     };
 
@@ -58,12 +59,18 @@ export const Sidebar = () => {
         return [firstDay, lastDay];
     };
 
+    const getDateValue = (dateValue: Date) => {
+        const fromDate = convertToTimestamp(dateValue);
+        const toValue = `${dateValue.getFullYear()}.${dateValue.getMonth() + 1}.${dateValue.getDate() + 1}`;
+        const toDate = Date.parse(toValue);
+        writeDownFromTo(fromDate, toDate);
+    };
+
     const getFilterFlag = (event: MouseEvent<HTMLElement>) => {
         const elem = event.target as HTMLElement;
         const flag = elem.dataset.filterflag;
         if (flag === 'today') {
-            const fromTo = convertToTimestamp(new Date());
-            writeDownFromTo(fromTo, fromTo);
+            getDateValue(new Date());
         } else if (flag === 'week') {
             const firstLastWeekDay = calcWeekDays();
             const fromDate = convertToTimestamp(firstLastWeekDay[0]);
@@ -86,6 +93,7 @@ export const Sidebar = () => {
         <div className="sidebar">
             <FilterDateBtn filterName={allFilters[0]} getFilterFlag={getFilterFlag} />
             <FilterDateBtn filterName={allFilters[1]} getFilterFlag={getFilterFlag} />
+            <FilterCalendarBtn getCalendarValue={getDateValue} />
             <FilterByStatus
                 isFilterByStatus={isFilterByStatus}
                 filterByStatus={filterByStatus}
