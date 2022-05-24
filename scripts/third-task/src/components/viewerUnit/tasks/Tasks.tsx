@@ -21,6 +21,7 @@ export const Tasks:FC<Props> = ({ data, prepareDateValue }) => {
                 const dateNum = `${prepareDateValue(fullDate.getDate())}${fullDate.getDate()}`;
                 const month = `${prepareDateValue(fullDate.getMonth())}${fullDate.getMonth()}`;
                 const convertedDate = `${dateNum}.${month}.${fullDate.getFullYear()} ${hours}:${minutes}`;
+                const statusClassName = `viewerUnit__task__status ${status ? 'viewerUnit__task__status_close' : ''}`.trim();
                 return (
                     <div
                         className="viewerUnit__task"
@@ -28,11 +29,7 @@ export const Tasks:FC<Props> = ({ data, prepareDateValue }) => {
                     >
                         <h3 className="viewerUnit__task__name">{name}</h3>
                         <p className="viewerUnit__task__description">{shortDesc}</p>
-                        <p className="viewerUnit__task__status">
-                            Статус задачи:
-                            {' '}
-                            {status ? 'close' : 'open'}
-                        </p>
+                        <div className={statusClassName} />
                         <p className="viewerUnit__task__date">{convertedDate}</p>
                     </div>
                 );

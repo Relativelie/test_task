@@ -9,13 +9,13 @@
 
 .viewerUnit__task {
     display: grid;
-    grid-template-areas: "name name"
+    grid-template-areas: "name status"
                         "description status"
                         "date date";
     gap: 10px;
     width: 95%;
     padding: 10px;
-    background-color: #D2D2D2;
+    background-color: #d2d2d2;
 }
 
 .viewerUnit__task__name {
@@ -31,11 +31,25 @@
 
 .viewerUnit__task__status {
     grid-area: status;
+    align-self: center;
+    justify-self: self-end;
+    width: 35px;
+    height: 35px;
+    border: 2px solid #717171;
+    border-radius: 10px;
+}
+
+.viewerUnit__task__status_close {
+    background-image: url('../../../assets/images/taskStatus.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .viewerUnit__task__date {
     grid-area: date;
     justify-self: self-end;
+
+    @include smallText()
 }
 
 .viewerUnit__task__name, 
