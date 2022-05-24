@@ -5,7 +5,7 @@ interface Props {
     getFilterFlag: Function
 }
 
-export const FilterBtn: FC<Props> = ({ filterName, getFilterFlag }) => {
+export const FilterDateBtn: FC<Props> = ({ filterName, getFilterFlag }) => {
     return (
         <div>
             <button

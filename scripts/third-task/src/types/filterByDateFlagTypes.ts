@@ -12,6 +12,8 @@ export enum FilterByDateFlagTypes {
     FILTER_BY_DATE_FLAG_ON = 'FILTER_BY_DATE_FLAG_ON',
     FILTER_BY_DATE_FLAG_OFF = 'FILTER_BY_DATE_FLAG_OFF',
     WRITE_DOWN_FROM_TO = 'WRITE_DOWN_FROM_TO',
+    FILTER_BY_STATUS_ON = 'FILTER_BY_STATUS_ON',
+    FILTER_BY_STATUS_OFF = 'FILTER_BY_STATUS_OFF',
 }
 
 interface FilterByDateFlagOn {
@@ -29,7 +31,17 @@ interface WriteDownFromTo {
     to: number,
 }
 
+interface FilterByStatusOn {
+    type: FilterByDateFlagTypes.FILTER_BY_STATUS_ON
+}
+
+interface FilterByStatusOff {
+    type: FilterByDateFlagTypes.FILTER_BY_STATUS_OFF
+}
+
 export type FilterByDateFlagAction =
     FilterByDateFlagOn
     | FilterByDateFlagOff
-    | WriteDownFromTo;
+    | WriteDownFromTo
+    | FilterByStatusOn
+    | FilterByStatusOff;

@@ -1,17 +1,17 @@
 import { MouseEvent, useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { FilterBtn } from './filterBtn/FilterBtn';
+import { FilterByStatus } from './filterByStatus/FilterByStatus';
+import { FilterDateBtn } from './filterDateBtn/FilterDateBtn';
 
 export const Sidebar = () => {
     const {
-        sendGet, writeDownFromTo, filterByDateFlagOn,
+        sendGet, writeDownFromTo, filterByDateFlagOn, filterByStatusOff, filterByStatusOn,
     } = useActions();
     const allFilters = [
         ['today', 'Сегодня'],
         ['week', 'На неделю'],
     ];
-
     const {
         from, to, isFilterByStatus,
     } = useTypedSelector(
@@ -21,26 +21,32 @@ export const Sidebar = () => {
         (requestState) => requestState.sendRequestReducer,
     );
 
+    const convertToTimestamp = (date: Date) => {
+        const midnight = `${date.getFullYear()}.${date.getMonth()}.${date.getDate()}`;
+        return Date.parse(midnight);
+    };
+
     useEffect(() => {
         const getTasksByDate = async () => {
-            const url = `https://cors-anywhere.herokuapp.com/https://todo.doczilla.pro/api/todos/date?from=${from}&to=${to}&status=${isFilterByStatus}&limit=100&offset=0`;
+            let filterByStatus: string;
+            if (isFilterByStatus) filterByStatus = '&status=false';
+            else filterByStatus = '';
+            const url = `https://cors-anywhere.herokuapp.com/https://todo.doczilla.pro/api/todos/date?from=${from}&to=${to}${filterByStatus}&limit=100&offset=0`;
             const headers = { accept: 'application/json' };
             await sendGet(url, headers);
         };
 
         if (from !== undefined && to !== undefined) {
             getTasksByDate();
+        } else {
+            writeDownFromTo(1502384101000, convertToTimestamp(new Date()));
+            if (from !== undefined && to !== undefined) getTasksByDate();
         }
-    }, [from, to]);
+    }, [from, to, isFilterByStatus]);
 
     useEffect(() => {
         if (from !== undefined && to !== undefined) filterByDateFlagOn(getResult);
     }, [getResult]);
-
-    const convertToTimestamp = (date: Date) => {
-        const midnight = `${date.getFullYear()}.${date.getMonth()}.${date.getDate()}`;
-        return Date.parse(midnight);
-    };
 
     const calcWeekDays = () => {
         const curr = new Date();
@@ -65,10 +71,16 @@ export const Sidebar = () => {
         }
     };
 
+    const filterByStatus = () => {
+        if (isFilterByStatus) filterByStatusOff();
+        else filterByStatusOn();
+    };
+
     return (
         <div>
-            <FilterBtn filterName={allFilters[0]} getFilterFlag={getFilterFlag} />
-            <FilterBtn filterName={allFilters[1]} getFilterFlag={getFilterFlag} />
+            <FilterDateBtn filterName={allFilters[0]} getFilterFlag={getFilterFlag} />
+            <FilterDateBtn filterName={allFilters[1]} getFilterFlag={getFilterFlag} />
+            <FilterByStatus isFilterByStatus={isFilterByStatus} filterByStatus={filterByStatus} />
         </div>
     );
 };

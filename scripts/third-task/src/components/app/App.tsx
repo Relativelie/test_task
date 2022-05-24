@@ -48,7 +48,6 @@ function App() {
         <div className="App">
             <TopMenu />
             <Sidebar />
-            {/* <FilterByStatus data={isSearched ? searchedList : content} /> */}
             <ViewerUnit data={tasks} />
         </div>
     );

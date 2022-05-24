@@ -15,3 +15,11 @@ export const writeDownFromTo = (from: number, to: number):FilterByDateFlagAction
     from,
     to,
 });
+
+export const filterByStatusOff = ():FilterByDateFlagAction => ({
+    type: FilterByDateFlagTypes.FILTER_BY_STATUS_OFF,
+});
+
+export const filterByStatusOn = ():FilterByDateFlagAction => ({
+    type: FilterByDateFlagTypes.FILTER_BY_STATUS_ON,
+});

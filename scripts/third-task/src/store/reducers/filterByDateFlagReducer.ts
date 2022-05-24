@@ -36,6 +36,18 @@ export const filterByDateFlagReducer = (
                 to: action.to,
             };
         }
+        case FilterByDateFlagTypes.FILTER_BY_STATUS_OFF: {
+            return {
+                ...state,
+                isFilterByStatus: false,
+            };
+        }
+        case FilterByDateFlagTypes.FILTER_BY_STATUS_ON: {
+            return {
+                ...state,
+                isFilterByStatus: true,
+            };
+        }
         default:
             return state;
     }
