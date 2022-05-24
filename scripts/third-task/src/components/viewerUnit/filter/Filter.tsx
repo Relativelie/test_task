@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import filterImg from './../../../assets/images/filter.png';
+import filterImg from '../../../assets/images/filter.png';
 import './Filter.scss';
 
 interface Props {
