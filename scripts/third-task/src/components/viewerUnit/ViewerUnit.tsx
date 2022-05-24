@@ -1,8 +1,10 @@
 import {
     FC, MouseEvent, useEffect, useState,
 } from 'react';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { DataType } from '../../types/dataType';
 import { Filter } from './filter/Filter';
+import { LoadingSpinner } from './loadingSpinner/LoadingSpinner';
 import { OpenedTaskCard } from './openedTaskCard/OpenedTaskCard';
 import { Tasks } from './tasks/Tasks';
 
@@ -17,6 +19,10 @@ export const ViewerUnit: FC<Props> = ({ data }) => {
     const [tasks, setTasks] = useState<DataType[] | []>([]);
     const [isCardOpened, setIsCardOpened] = useState<boolean>(false);
     const [selectedCard, setSelectedCard] = useState<DataType>();
+
+    const { isRequestLoading } = useTypedSelector(
+        (requestState) => requestState.sendRequestReducer,
+    );
 
     useEffect(() => {
         setTasks(data);
@@ -90,6 +96,7 @@ export const ViewerUnit: FC<Props> = ({ data }) => {
         setSelectedCard(undefined);
     };
 
+    if (isRequestLoading) return <LoadingSpinner />;
     return (
         <div className="viewerUnit">
             <Filter changeFilterState={changeFilterState} />
