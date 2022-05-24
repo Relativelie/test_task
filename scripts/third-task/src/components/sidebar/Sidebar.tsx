@@ -4,17 +4,18 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { FilterByStatus } from './filterByStatus/FilterByStatus';
 import { FilterDateBtn } from './filterDateBtn/FilterDateBtn';
 
+import './Sidebar.scss';
+
 export const Sidebar = () => {
     const {
-        sendGet, writeDownFromTo, filterByDateFlagOn, filterByStatusOff, filterByStatusOn,
+        sendGet,
+        writeDownFromTo,
+        filterByDateFlagOn,
+        filterByStatusOff,
+        filterByStatusOn,
     } = useActions();
-    const allFilters = [
-        ['today', 'Сегодня'],
-        ['week', 'На неделю'],
-    ];
-    const {
-        from, to, isFilterByStatus,
-    } = useTypedSelector(
+
+    const { from, to, isFilterByStatus } = useTypedSelector(
         (filterState) => filterState.filterByDateFlagReducer,
     );
     const { getResult } = useTypedSelector(
@@ -31,7 +32,7 @@ export const Sidebar = () => {
             let filterByStatus: string;
             if (isFilterByStatus) filterByStatus = '&status=false';
             else filterByStatus = '';
-            const url = `https://cors-anywhere.herokuapp.com/https://todo.doczilla.pro/api/todos/date?from=${from}&to=${to}${filterByStatus}&limit=100&offset=0`;
+            const url = `https://cors-anywhere.herokuapp.com/https://todo.doczilla.pro/api/todos/date?from=${from}&to=${to}${filterByStatus}&limit=10&offset=0`;
             const headers = { accept: 'application/json' };
             await sendGet(url, headers);
         };
@@ -76,11 +77,19 @@ export const Sidebar = () => {
         else filterByStatusOn();
     };
 
+    const allFilters = [
+        ['today', 'Сегодня'],
+        ['week', 'На неделю'],
+    ];
+
     return (
-        <div>
+        <div className="sidebar">
             <FilterDateBtn filterName={allFilters[0]} getFilterFlag={getFilterFlag} />
             <FilterDateBtn filterName={allFilters[1]} getFilterFlag={getFilterFlag} />
-            <FilterByStatus isFilterByStatus={isFilterByStatus} filterByStatus={filterByStatus} />
+            <FilterByStatus
+                isFilterByStatus={isFilterByStatus}
+                filterByStatus={filterByStatus}
+            />
         </div>
     );
 };

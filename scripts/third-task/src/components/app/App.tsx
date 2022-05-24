@@ -6,6 +6,8 @@ import { TopMenu } from '../topMenu/TopMenu';
 import { Sidebar } from '../sidebar/Sidebar';
 import { ViewerUnit } from '../viewerUnit/ViewerUnit';
 
+import './App.scss';
+
 function App() {
     const [tasks, setTasks] = useState<DataType[]>([]);
 
@@ -18,7 +20,6 @@ function App() {
     const { getResult } = useTypedSelector(
         (requestState) => requestState.sendRequestReducer,
     );
-
     const { filteredList } = useTypedSelector(
         (filterState) => filterState.filterByDateFlagReducer,
     );

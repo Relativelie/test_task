@@ -1,6 +1,8 @@
 import { MutableRefObject, useRef } from 'react';
 import { useActions } from '../../../hooks/useActions';
 
+import './Search.scss';
+
 export const Search = () => {
     const inputValue = useRef() as MutableRefObject<HTMLInputElement>;
     const { sendGet } = useActions();
@@ -15,6 +17,7 @@ export const Search = () => {
     };
     return (
         <input
+            className="topMenu__search"
             type="text"
             ref={inputValue}
             placeholder="Поиск"

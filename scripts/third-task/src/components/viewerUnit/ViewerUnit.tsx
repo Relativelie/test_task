@@ -3,6 +3,8 @@ import { DataType } from '../../types/dataType';
 import { Filter } from './filter/Filter';
 import { Tasks } from './tasks/Tasks';
 
+import './ViewerUnit.scss';
+
 interface Props {
     data: DataType[]
 }
@@ -43,7 +45,7 @@ export const ViewerUnit: FC<Props> = ({ data }) => {
     };
 
     return (
-        <div>
+        <div className="viewerUnit">
             <Filter changeFilterState={changeFilterState} />
             <Tasks data={tasks} prepareDateValue={prepareDateValue} />
         </div>
