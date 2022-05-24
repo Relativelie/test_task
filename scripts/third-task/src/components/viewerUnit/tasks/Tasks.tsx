@@ -1,16 +1,12 @@
 import { FC } from 'react';
-import { DataType } from '../../types/dataType';
+import { DataType } from '../../../types/dataType';
 
 interface Props {
-    data: DataType[]
+    data: DataType[],
+    prepareDateValue: Function
 }
 
-export const Tasks:FC<Props> = ({ data }) => {
-    const prepareDateValue = (value: number) => {
-        if (value.toString().length === 2) return '';
-        return '0';
-    };
-
+export const Tasks:FC<Props> = ({ data, prepareDateValue }) => {
     return (
         <div>
             {data.map((item) => {
@@ -27,7 +23,11 @@ export const Tasks:FC<Props> = ({ data }) => {
                     <div key={`task-${id}`}>
                         <p>{name}</p>
                         <p>{shortDesc}</p>
-                        <p>Статус задачи: {status ? 'close' : 'open'}</p>
+                        <p>
+                            Статус задачи:
+                            {' '}
+                            {status ? 'close' : 'open'}
+                        </p>
                         <p>{convertedDate}</p>
                     </div>
                 );

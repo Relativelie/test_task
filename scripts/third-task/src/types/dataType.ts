@@ -5,4 +5,4 @@ export type DataType = {
     name: string,
     shortDesc: string,
     status: boolean
-}
+};

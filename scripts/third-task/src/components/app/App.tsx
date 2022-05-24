@@ -3,8 +3,8 @@ import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { DataType } from '../../types/dataType';
 import { TopMenu } from '../topMenu/TopMenu';
-import { Tasks } from '../tasks/Tasks';
 import { Sidebar } from '../sidebar/Sidebar';
+import { ViewerUnit } from '../viewerUnit/ViewerUnit';
 
 function App() {
     const [tasks, setTasks] = useState<DataType[]>([]);
@@ -29,28 +29,27 @@ function App() {
         if (searchedList.length !== 0) setTasks(searchedList);
         else if (filteredList.length !== 0) setTasks(filteredList);
         else setTasks(content);
-        console.log(filteredList)
     }, [searchedList, content, filteredList]);
-    console.log(filteredList)
+
     useEffect(() => {
         const getRequest = async () => {
-            const url = 'https://cors-anywhere.herokuapp.com/https://todo.doczilla.pro/api/todos?limit=100&offset=3';
+            const url = 'https://cors-anywhere.herokuapp.com/https://todo.doczilla.pro/api/todos?limit=10&offset=0';
             const headers = { accept: 'application/json' };
             await sendGet(url, headers);
         };
         getRequest();
     }, []);
 
-    // useEffect(() => {
-    //     saveContent(getResult);
-    // }, [getResult]);
+    useEffect(() => {
+        saveContent(getResult);
+    }, [getResult]);
 
     return (
         <div className="App">
             <TopMenu />
             <Sidebar />
             {/* <FilterByStatus data={isSearched ? searchedList : content} /> */}
-            <Tasks data={tasks} />
+            <ViewerUnit data={tasks} />
         </div>
     );
 }

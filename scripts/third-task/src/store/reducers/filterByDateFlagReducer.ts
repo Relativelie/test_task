@@ -23,7 +23,6 @@ export const filterByDateFlagReducer = (
             };
         }
         case FilterByDateFlagTypes.FILTER_BY_DATE_FLAG_ON: {
-            console.log("action.data", action.data)
             return {
                 ...state,
                 isFilteredByFlag: true,
