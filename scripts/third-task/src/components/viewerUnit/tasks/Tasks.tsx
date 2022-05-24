@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { DataType } from '../../../types/dataType';
 
+import './Tasks.scss';
+
 interface Props {
     data: DataType[],
     prepareDateValue: Function
@@ -8,7 +10,7 @@ interface Props {
 
 export const Tasks:FC<Props> = ({ data, prepareDateValue }) => {
     return (
-        <div>
+        <div className="viewerUnit__tasks">
             {data.map((item) => {
                 const {
                     id, name, status, date, shortDesc,
@@ -20,15 +22,18 @@ export const Tasks:FC<Props> = ({ data, prepareDateValue }) => {
                 const month = `${prepareDateValue(fullDate.getMonth())}${fullDate.getMonth()}`;
                 const convertedDate = `${dateNum}.${month}.${fullDate.getFullYear()} ${hours}:${minutes}`;
                 return (
-                    <div key={`task-${id}`}>
-                        <p>{name}</p>
-                        <p>{shortDesc}</p>
-                        <p>
+                    <div
+                        className="viewerUnit__task"
+                        key={`task-${id}`}
+                    >
+                        <h3 className="viewerUnit__task__name">{name}</h3>
+                        <p className="viewerUnit__task__description">{shortDesc}</p>
+                        <p className="viewerUnit__task__status">
                             Статус задачи:
                             {' '}
                             {status ? 'close' : 'open'}
                         </p>
-                        <p>{convertedDate}</p>
+                        <p className="viewerUnit__task__date">{convertedDate}</p>
                     </div>
                 );
             })}

@@ -12,6 +12,21 @@
     font-weight: 400;
     font-size: 11px;
     line-height: 12px;
-    text-align: center;
     letter-spacing: 0.02em;
+}
+
+@mixin averageText() {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+@mixin headerText($fontSize) {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: $fontSize;
+    line-height: 22px;
 }
