@@ -5,22 +5,17 @@ import './Tasks.scss';
 
 interface Props {
     data: DataType[],
-    prepareDateValue: Function
+    openTaskCard: Function,
+    convertDate: Function
 }
 
-export const Tasks:FC<Props> = ({ data, prepareDateValue }) => {
+export const Tasks: FC<Props> = ({ data, openTaskCard, convertDate }) => {
     return (
         <div className="viewerUnit__tasks">
             {data.map((item) => {
                 const {
                     id, name, status, date, shortDesc,
                 } = item;
-                const fullDate = new Date(date);
-                const hours = `${prepareDateValue(fullDate.getHours())}${fullDate.getHours()}`;
-                const minutes = `${prepareDateValue(fullDate.getMinutes())}${fullDate.getMinutes()}`;
-                const dateNum = `${prepareDateValue(fullDate.getDate())}${fullDate.getDate()}`;
-                const month = `${prepareDateValue(fullDate.getMonth())}${fullDate.getMonth()}`;
-                const convertedDate = `${dateNum}.${month}.${fullDate.getFullYear()} ${hours}:${minutes}`;
                 const statusClassName = `viewerUnit__task__status ${status ? 'viewerUnit__task__status_close' : ''}`.trim();
                 return (
                     <div
@@ -28,9 +23,17 @@ export const Tasks:FC<Props> = ({ data, prepareDateValue }) => {
                         key={`task-${id}`}
                     >
                         <h3 className="viewerUnit__task__name">{name}</h3>
+                        <button
+                            className="viewerUnit__task__openBtn"
+                            type="button"
+                            onClick={(e) => openTaskCard(e)}
+                            data-task={id}
+                        >
+                            Открыть задачу
+                        </button>
                         <p className="viewerUnit__task__description">{shortDesc}</p>
                         <div className={statusClassName} />
-                        <p className="viewerUnit__task__date">{convertedDate}</p>
+                        <p className="viewerUnit__task__date">{convertDate(date)}</p>
                     </div>
                 );
             })}
